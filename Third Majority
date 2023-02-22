@@ -1,0 +1,46 @@
+import java.util.*;
+
+public class Main {
+    public static void main (String args[]) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int []A=new int[n];
+        for(int i=0;i<n;i++)
+        {
+            A[i]=sc.nextInt();
+        }
+        ArrayList<Integer>List=representative(A);
+        for(int i=0;i<List.size();i++)
+        {
+            System.out.println(List.get(i));
+        }
+    }
+    public static ArrayList<Integer>representative(int[]A)
+    {
+        Arrays.sort(A);
+        int count=1;
+        int t=A[0];
+        ArrayList<Integer>a=new ArrayList<>();
+        for(int i=1;i<A.length;i++)
+        {
+            if(A[i]==A[i-1])
+            {
+                count++;
+            }
+            else
+            {
+                if(count>A.length/3)
+                {
+                    a.add(t);
+                }
+                t=A[i];
+                count=1;
+            }
+        }
+        if(count>A.length/3)
+        {
+            a.add(t);
+        }
+        return a;
+    }
+}
