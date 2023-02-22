@@ -1,0 +1,38 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String args[]) {
+        Scanner sc=new Scanner(System.in);
+        long t=sc.nextInt();
+        for(int test=0;test<t;test++)
+        {
+            int n=sc.nextInt();
+            long []c=new long[n];
+            for(int j=0;j<n;j++)
+            {
+                c[j]=sc.nextLong();
+            }
+            long []L=new long[n];
+            for(int j=0;j<n;j++)
+            {
+                L[j]=sc.nextLong();
+            }
+            long minc=c[0];
+            long ttl=minc*L[0];
+            for(int i=1;i<n;i++)
+            {
+                if(minc>c[i])
+                {
+                    minc=c[i];
+                    ttl=ttl+minc*L[i];
+                }
+                else
+                {
+                    ttl=ttl+minc*L[i];
+                }
+            }
+            System.out.println(ttl);
+
+        }
+    }
+}
