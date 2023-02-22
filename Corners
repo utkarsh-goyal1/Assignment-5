@@ -1,0 +1,32 @@
+import java.util.*;
+
+public class Main {
+    public static void main (String args[]) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int []A=new int[n];
+        for(int i=0;i<n;i++)
+        {
+            A[i]=sc.nextInt();
+        }
+        System.out.print(corner(A));
+    }
+    public static int corner(int []A)
+    {
+        int max=0;
+        for(int i=0;i<A.length;i++)
+        {
+            int count=0;
+            int si=-1;
+            int ei=A[i];
+            while(count>=0 && ei!=si)
+            {
+                ei=A[ei];
+                si=A[i];
+                count++;
+            }
+            max=Math.max(count,max);
+        }
+        return max;
+    }
+}
